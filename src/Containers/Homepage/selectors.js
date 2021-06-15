@@ -1,10 +1,8 @@
 import { createSelector } from "reselect";
 
-const HomepageState = (state) => {
-  state.Homepage;
-};
+const HomePageState = (state) => state.HomePage;
 
 export const makeSelectUsers = createSelector(
-  HomepageState,
-  (homepage) => homepage.users
+  HomePageState,
+  (HomePage) => HomePage.users
 );
