@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from "redux";
 
-import homepage from "./src/Containers/Homepage/reducers";
+import homepage from "./Containers/Homepage/reducers";
 
 const reducers = combineReducers({ homepage });
 

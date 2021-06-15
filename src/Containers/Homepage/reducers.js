@@ -1,8 +1,10 @@
-const defaultState = {};
+const defaultState = {
+  users: ["no users!"],
+};
 
-export default hompageReducer = (state = defaultState, action) => {
+export default function homepageReducer(state = defaultState, action) {
   switch (action.type) {
     default:
       return state;
   }
-};
+}
