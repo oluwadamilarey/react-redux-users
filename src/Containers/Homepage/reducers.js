@@ -4,7 +4,7 @@ const defaultState = {
 
 export default function HomePageReducer(state = defaultState, action) {
   switch (action.type) {
-    case ActionType.SET_USERS:
+    case ActionTypes.SET_USERS:
       return { ...state, users: action.payload };
     default:
       return state;
