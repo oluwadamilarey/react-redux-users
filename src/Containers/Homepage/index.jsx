@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import axios from "axios";
 
@@ -10,18 +10,19 @@ const stateSelector = createSelector(makeSelectUsers, (users) => ({
   users,
 }));
 
+const actionDispactch = (dispatch) => ({
+  setUser: (users) => dispatch(setUsers(users)),
+});
+
 export const HomePage = (props) => {
   const { users } = useSelector(stateSelector);
   const [dummyUser, setDummyUser] = useState([]);
 
   useEffect(() => {
     fetchUsers();
-    console.log("state:", dummyUser);
   }, []);
 
-  const actionDispactcher = (dispatch) => ({
-    setUser: (users) => dispatch(setUsers(users)),
-  });
+  const { setUser } = actionDispactch(useDispatch());
 
   let usersArray = [];
   const fetchUsers = async () => {
@@ -30,6 +31,7 @@ export const HomePage = (props) => {
       .catch((err) => console.log("err: ", err));
     usersArray.push(data.data);
     setDummyUser(data.data);
+    setUser(data.data);
   };
 
   return (
